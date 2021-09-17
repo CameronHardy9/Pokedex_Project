@@ -4,30 +4,24 @@ import "./Navbar.css";
 class Navbar extends React.Component {
     constructor() {
         super();
-        this.state = {
-            search: null,
-        }
-    }
-    changeHandler = (e) => {
-        this.setState({search: e.target.value})
     }
     render() {
         return (
             <nav>
                 <ul>
                     <li>
-                        <input className="search" onChange={this.changeHandler} placeholder="Pokemon name..." type="text" />
+                        <input data-key="search" className="search" placeholder="Pokemon name..." type="text" />
                     </li>
                     <li>
                         <details id="type">
                             <summary>Type</summary>
                             <ul>
                                 <li>
-                                    <input className="option" type="checkbox" name="fire" />
+                                    <input data-key="type" className="option" type="checkbox" name="fire" />
                                     Fire
                                 </li>
                                 <li>
-                                    <input className="option" type="checkbox" name="water" />
+                                    <input data-key="type" className="option" type="checkbox" name="water" />
                                     Water
                                 </li>
                             </ul>
@@ -38,12 +32,12 @@ class Navbar extends React.Component {
                             <summary>Weakness</summary>
                             <ul>
                                 <li>
-                                    <input className="option" type="checkbox" name="earth" />
-                                    Earth
+                                    <input data-key="weakness" className="option" type="checkbox" name="ice" />
+                                    Ice
                                 </li>
                                 <li>
-                                    <input className="option" type="checkbox" name="shadow" />
-                                    Shadow
+                                    <input data-key="weakness" className="option" type="checkbox" name="rock" />
+                                    Rock
                                 </li>
                             </ul>
                         </details>
