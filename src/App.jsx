@@ -23,7 +23,7 @@ class App extends React.Component {
         console.log(names);
         return names;
     };
-    changeHandler = (e) => {
+    changeHandler = (e) => {    // could shorten by plugging type or weakness one iteration of the add/remove logic
         switch (e.target.dataset.key) {
             case "search":
                 this.setState({ search: e.target.value });
@@ -31,19 +31,15 @@ class App extends React.Component {
             case "type":
                 if(e.target.checked) {
                     this.setState({ type: [...this.state.type, e.target.name] });
-                    console.log("add",this.state.type)
                 } else {
                     this.setState({type: this.state.type.filter((item) => item != e.target.name)})
-                    console.log("remove",this.state.type)
                 }
                 break;
             case "weakness":
                 if(e.target.checked) {
                     this.setState({ weakness: [...this.state.weakness, e.target.name] });
-                    console.log("add",this.state.weakness)
                 } else {
                     this.setState({weakness: this.state.weakness.filter((item) => item != e.target.name)})
-                    console.log("remove",this.state.weakness)
                 }
                 break;
             default:
