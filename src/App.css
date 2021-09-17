@@ -1,0 +1,23 @@
+.mainContainer {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    margin: 10px;
+}
+
+.pokeCardContainer {
+    width: 150px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    list-style: none;
+    margin: 10px;
+}
+
+.allCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
