@@ -10,10 +10,8 @@ class App extends React.Component{
             pokemon: [],
         }
     }
-    componentDidMount = () => {
-        const pokemon = FetchEmAll();
-        console.log("componentDidMount: ",pokemon)
-        this.setState({pokemon: pokemon});
+    componentDidMount = async() => {
+        this.setState({pokemon: await FetchEmAll()});
     }
     render() {
         console.log("App State: ",this.state.pokemon);
