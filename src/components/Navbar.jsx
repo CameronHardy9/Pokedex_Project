@@ -1,11 +1,16 @@
 import React from "react";
 import "./Navbar.css";
+import Type from "./Type"
 
 class Navbar extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            pokemon: props.pokemon
+        }
     }
     render() {
+        console.log(this.state.pokemon)
         return (
             <nav>
                 <ul>
@@ -15,16 +20,7 @@ class Navbar extends React.Component {
                     <li>
                         <details id="type">
                             <summary>Type</summary>
-                            <ul>
-                                <li>
-                                    <input data-key="type" className="option" type="checkbox" name="fire" />
-                                    Fire
-                                </li>
-                                <li>
-                                    <input data-key="type" className="option" type="checkbox" name="water" />
-                                    Water
-                                </li>
-                            </ul>
+                            <Type pokemon={this.state.pokemon}/>
                         </details>
                     </li>
                     <li>
