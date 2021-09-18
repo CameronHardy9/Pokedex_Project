@@ -1,5 +1,4 @@
 import "./App.css";
-
 import React from "react";
 import Navbar from "./components/Navbar";
 import FetchEmAll from "./components/FetchEmAll";
@@ -50,7 +49,7 @@ class App extends React.Component {
     render() {
         return (
             <div onChange={this.changeHandler} className="mainContainer">
-                <Navbar />
+                <Navbar pokemon={this.state.pokemon}/>
                 <main>
                     <h1>{this.state.search}</h1>
                     <h1>{this.state.type}</h1>
