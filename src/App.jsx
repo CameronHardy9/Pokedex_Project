@@ -9,20 +9,24 @@ class App extends React.Component {
         super();
         this.state = {
             pokemon: [],
+            fetchDone: false,
             search: null,
             type: [],
             weakness: [],
         };
     }
     componentDidMount = async () => {
-        this.setState({ pokemon: await FetchEmAll() });
+        this.setState({ 
+            pokemon: await FetchEmAll(), 
+            fetchDone: true,
+        });
     };
     searchSuggestion = () => {
         let names = this.state.pokemon; //randomize a selection directly from state
         console.log(names);
         return names;
     };
-    changeHandler = (e) => {    // could shorten by plugging type or weakness one iteration of the add/remove logic
+    handleChange = (e) => {    // could shorten by plugging type or weakness one iteration of the add/remove logic
         switch (e.target.dataset.key) {
             case "search":
                 this.setState({ search: e.target.value });
@@ -31,14 +35,14 @@ class App extends React.Component {
                 if(e.target.checked) {
                     this.setState({ type: [...this.state.type, e.target.name] });
                 } else {
-                    this.setState({type: this.state.type.filter((item) => item != e.target.name)})
+                    this.setState({type: this.state.type.filter((item) => item !== e.target.name)})
                 }
                 break;
             case "weakness":
                 if(e.target.checked) {
                     this.setState({ weakness: [...this.state.weakness, e.target.name] });
                 } else {
-                    this.setState({weakness: this.state.weakness.filter((item) => item != e.target.name)})
+                    this.setState({weakness: this.state.weakness.filter((item) => item !== e.target.name)})
                 }
                 break;
             default:
@@ -47,19 +51,24 @@ class App extends React.Component {
         }
     };
     render() {
-        return (
-            <div onChange={this.changeHandler} className="mainContainer">
-                <Navbar pokemon={this.state.pokemon}/>
-                <main>
-                    <h1>{this.state.search}</h1>
-                    <h1>{this.state.type}</h1>
-                    <h1>{this.state.weakness}</h1>
-                    <Card
+        let mainDisplay;
+        if(this.state.fetchDone) {
+            mainDisplay = (
+                <Card
                         pokemon={this.state.pokemon}
                         search={this.state.search}
                         type={this.state.type}
                         weakness={this.state.weakness}
                     />
+            )
+        } else {
+            mainDisplay = <h1 className="loader">Loading...</h1>
+        }
+        return (
+            <div onChange={this.handleChange} className="mainContainer">
+                <Navbar pokemon={this.state.pokemon}/>
+                <main>
+                    {mainDisplay}
                 </main>
             </div>
         );
