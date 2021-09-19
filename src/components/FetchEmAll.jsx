@@ -7,6 +7,10 @@ async function FetchEmAll() {
         }
     );
     let data = await response.json();
+    for (let element of data.pokemon) {
+        element.display = true;
+    }
+    console.log(data.pokemon)
     return data.pokemon;
     } catch(err) {
         console.error(err);
