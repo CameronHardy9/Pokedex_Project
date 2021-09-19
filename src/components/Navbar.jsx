@@ -8,9 +8,9 @@ class Navbar extends React.Component {
         return (
             <nav>
                 <ul>
-                    <li><h1>Pokédex</h1></li>
+                    <li><h1 className="pokedex">Pokédex</h1></li>
                     <li>
-                        <input data-key="search" className="search" placeholder="Pokemon name..." type="text" />
+                        <input data-key="search" className="search" placeholder="Pokémon name..." type="text" />
                     </li>
                     <li>
                         <details id="type">
