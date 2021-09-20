@@ -8,8 +8,8 @@ function Card(props) {
                 <li key={idx} id={id} className="pokeCardContainer">
                     <div className="pokeCard">
                         <img className="profilePic" src={img} alt={name} />
-                        <div>{num}</div>
-                        <div>{name}</div>
+                        <div>#{num}</div>
+                        <div><strong>{name}</strong></div>
                         <div>{type}</div>
                         <div>{weaknesses}</div>
                     </div>
