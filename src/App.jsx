@@ -33,6 +33,7 @@ class App extends React.Component {
                 break;
             case "type":
                 if(e.target.checked) {
+                    this.typeHandler(e.target, e.target.name)                   // Needs testing
                     this.setState({ type: [...this.state.type, e.target.name] });
                 } else {
                     this.setState({type: this.state.type.filter((item) => item !== e.target.name)})
@@ -50,6 +51,21 @@ class App extends React.Component {
                 break;
         }
     };
+    typeHandler = (selection, value) => {               //Needs testing
+        if(selection.checked) {
+            let mapped = this.state.pokemon.map((item) => {
+                if(item.flat().includes(value)){
+                    return item.display = true;
+                } else {
+                    return item.display = false;
+                }
+            })
+            console.log(mapped);
+        }
+    }
+    // weaknessHandler = (selection, value) => {
+
+    // }
     render() {
         let mainDisplay;
         if(this.state.fetchDone) {
