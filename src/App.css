@@ -7,8 +7,3 @@ main {
     margin: 10px;
 }
 
-@media only screen and (min-width: 700px) and (max-width: 950px) {
-    .mainContainer {
-        flex-direction: column;
-    }
-}
