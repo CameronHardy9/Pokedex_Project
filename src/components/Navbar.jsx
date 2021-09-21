@@ -11,11 +11,13 @@ class Navbar extends React.Component {
         }
     }
     componentDidMount() {
-        setInterval(this.searchSuggestion, 3000);
+        setInterval(this.searchSuggestion, 4000);
     }
     searchSuggestion = () => {
-        let rand = Math.round(Math.random() * this.props.pokemon.length);
-        this.setState({suggestion: this.props.pokemon[rand].name});
+        let rand = Math.floor(Math.random() * this.props.pokemon.length);
+        if(this.props.pokemon[rand].name) {
+            this.setState({suggestion: this.props.pokemon[rand].name});
+        }
     }
     render() {
         return (
