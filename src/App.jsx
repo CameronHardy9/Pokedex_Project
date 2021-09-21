@@ -28,7 +28,7 @@ class App extends React.Component {
         // could shorten by plugging type or weakness one iteration of the add/remove logic
         switch (e.target.dataset.key) {
             case "search":
-                this.setState({ search: e.target.value });
+                this.setState({ search: e.target.value.toLowerCase() });
                 break;
             case "type":
                 const typeBox = document.querySelectorAll(`[data-key="type"]`);
