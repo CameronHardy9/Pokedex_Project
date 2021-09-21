@@ -10,10 +10,12 @@
 }
 
 .pokeCardContainer:hover {
+    transition-duration: 0.5s;
     box-shadow: 0px 0px 10px 2px var(--pokemon-6);
 }
 
 .pokeCardContainer:active {
+    transition-duration: 0ms;
     box-shadow: 0px 0px 10px 0px var(--pokemon-6);
 }
 
@@ -22,6 +24,21 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    color: black;
+}
+
+.cardLower {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.cardLower li {
+    list-style: none;
+    margin-left: none;
+    text-align: center;
 }
 
 .allCards {
@@ -36,12 +53,22 @@
         width: 100px;
         height: 150px;
     }
+
+    .profilePic {
+        width: 80px;
+        height:80px;
+    }
 }
 
 @media only screen and (min-width: 976px) and (max-width: 1150px){
     .pokeCardContainer {
         width: 150px;
         height: 200px;
+    }
+    
+    .profilePic {
+        width: 120px;
+        height:120px;
     }
 }
 
@@ -50,11 +77,21 @@
         width: 200px;
         height: 250px;
     }
+
+    .profilePic {
+        width: 150px;
+        height:150px;
+    }
 }
 
 @media only screen and (min-width: 1401px) {
     .pokeCardContainer {
         width: 250px;
         height: 300px;
+    }
+
+    .profilePic {
+        width: 200px;
+        height: 200px;
     }
 }
