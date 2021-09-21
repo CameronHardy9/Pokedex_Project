@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card(props) {
     let items = props.pokemon.map((item, idx) => {
         let { type, name, id, img, num, weaknesses } = item;
-        if (name.includes(props.search) || !props.search) {
+        if (name.toLowerCase().includes(props.search) || !props.search) {
             if (type.includes(...props.type) || !props.type[0]) {
                 if (
                     weaknesses.includes(...props.weakness) ||
