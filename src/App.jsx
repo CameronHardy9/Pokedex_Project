@@ -24,11 +24,6 @@ class App extends React.Component {
             fetchDone: true,
         });
     };
-    searchSuggestion = () => {
-        let names = this.state.pokemon; //randomize a selection directly from state
-        console.log(names);
-        return names;
-    };
     handleChange = (e) => {
         // could shorten by plugging type or weakness one iteration of the add/remove logic
         switch (e.target.dataset.key) {
@@ -36,11 +31,20 @@ class App extends React.Component {
                 this.setState({ search: e.target.value });
                 break;
             case "type":
+                const typeBox = document.querySelectorAll(`[data-key="type"]`);
                 if (e.target.checked) {
+                    typeBox.forEach((item) => {
+                        if(item.name != e.target.name) {
+                            item.disabled = true;
+                        }
+                    })
                     this.setState({
                         type: [...this.state.type, e.target.name],
                     });
                 } else {
+                    typeBox.forEach((item) => {
+                        item.disabled = false;
+                    })
                     this.setState({
                         type: this.state.type.filter(
                             (item) => item !== e.target.name
@@ -49,11 +53,20 @@ class App extends React.Component {
                 }
                 break;
             case "weakness":
+                const weakBox = document.querySelectorAll(`[data-key="weakness"]`);
                 if (e.target.checked) {
+                    weakBox.forEach((item) => {
+                        if(item.name != e.target.name) {
+                            item.disabled = true;
+                        }
+                    })
                     this.setState({
                         weakness: [...this.state.weakness, e.target.name],
                     });
                 } else {
+                    weakBox.forEach((item) => {
+                        item.disabled = false;
+                    })
                     this.setState({
                         weakness: this.state.weakness.filter(
                             (item) => item !== e.target.name
@@ -88,9 +101,9 @@ class App extends React.Component {
                         <Route exact path="/">
                             {mainDisplay}
                         </Route>
-                        {this.state.pokemon.map((item) => {
+                        {this.state.pokemon.map((item, idx) => {
                             return (
-                                <Route path={`/${item.name}`}>
+                                <Route key={idx} path={`/${item.name}`}>
                                     <div className="back">
                                         <Link
                                             style={{ textDecoration: "none" }}
