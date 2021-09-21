@@ -23,24 +23,30 @@ function Card(props) {
                                         alt={name}
                                     />
                                     <div>#{num}</div>
-                                    <div>
-                                        <strong>{name}</strong>
+                                    <div className="name">
+                                        {name}
                                     </div>
                                     <div className="cardLower">
-                                        <ul>
-                                            {type.map((item, idx) => {
-                                                return (
-                                                    <li key={idx}>{item}</li>
-                                                );
-                                            })}
-                                        </ul>
-                                        <ul>
-                                            {weaknesses.map((item, idx) => {
-                                                return (
-                                                    <li key={idx}>{item}</li>
-                                                );
-                                            })}
-                                        </ul>
+                                        <div>
+                                            <label>Type</label>
+                                            <ul>
+                                                {type.map((item, idx) => {
+                                                    return (
+                                                        <li key={idx}>{item}</li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <label>Weaknesses</label>
+                                            <ul>
+                                                {weaknesses.map((item, idx) => {
+                                                    return (
+                                                        <li key={idx}>{item}</li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </Link>

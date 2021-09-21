@@ -35,10 +35,22 @@
     align-items: flex-start;
 }
 
+.name {
+    font-weight: 700;
+}
+
+.cardLower label {
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 12px;
+}
+
 .cardLower li {
     list-style: none;
     margin-left: none;
-    text-align: center;
+    text-align:left;
+    font-weight: 300;
+    font-size: 12px;
 }
 
 .allCards {
