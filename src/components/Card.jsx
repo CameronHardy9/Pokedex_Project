@@ -1,20 +1,53 @@
 import "./Card.css";
+import { Link } from "react-router-dom";
 
 function Card(props) {
     let items = props.pokemon.map((item, idx) => {
         let { type, name, id, img, num, weaknesses } = item;
         if (name.includes(props.search) || !props.search) {
-            return (
-                <li key={idx} id={id} className="pokeCardContainer">
-                    <div className="pokeCard">
-                        <img className="profilePic" src={img} alt={name} />
-                        <div>#{num}</div>
-                        <div><strong>{name}</strong></div>
-                        <div>{type}</div>
-                        <div>{weaknesses}</div>
-                    </div>
-                </li>
-            );
+            if (type.includes(...props.type) || !props.type[0]) {
+                if (
+                    weaknesses.includes(...props.weakness) ||
+                    !props.weakness[0]
+                ) {
+                    return (
+                        <li key={idx} id={id} className="pokeCardContainer">
+                            <Link
+                                style={{ textDecoration: "none" }}
+                                to={`/${name}`}
+                            >
+                                <div className="pokeCard">
+                                    <img
+                                        className="profilePic"
+                                        src={img}
+                                        alt={name}
+                                    />
+                                    <div>#{num}</div>
+                                    <div>
+                                        <strong>{name}</strong>
+                                    </div>
+                                    <div className="cardLower">
+                                        <ul>
+                                            {type.map((item, idx) => {
+                                                return (
+                                                    <li key={idx}>{item}</li>
+                                                );
+                                            })}
+                                        </ul>
+                                        <ul>
+                                            {weaknesses.map((item, idx) => {
+                                                return (
+                                                    <li key={idx}>{item}</li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </Link>
+                        </li>
+                    );
+                }
+            }
         }
     });
     return <ul className="allCards">{items}</ul>;
