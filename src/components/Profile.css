@@ -1,0 +1,12 @@
+.profileData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.profileData li {
+    list-style: none;
+    margin-left: 0;
+}
