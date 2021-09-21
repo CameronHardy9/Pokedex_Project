@@ -3,6 +3,8 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import FetchEmAll from "./components/FetchEmAll";
 import Card from "./components/Card";
+import { Switch, Route, Link } from "react-router-dom";
+import Profile from "./components/Profile"
 
 class App extends React.Component {
     constructor() {
@@ -11,13 +13,14 @@ class App extends React.Component {
             pokemon: [],
             fetchDone: false,
             search: null,
+            suggestion: "Pokemon name...",
             type: [],
             weakness: [],
         };
     }
     componentDidMount = async () => {
-        this.setState({ 
-            pokemon: await FetchEmAll(), 
+        this.setState({
+            pokemon: await FetchEmAll(),
             fetchDone: true,
         });
     };
@@ -26,24 +29,36 @@ class App extends React.Component {
         console.log(names);
         return names;
     };
-    handleChange = (e) => {    // could shorten by plugging type or weakness one iteration of the add/remove logic
+    handleChange = (e) => {
+        // could shorten by plugging type or weakness one iteration of the add/remove logic
         switch (e.target.dataset.key) {
             case "search":
                 this.setState({ search: e.target.value });
                 break;
             case "type":
-                if(e.target.checked) {
-                    this.typeHandler(e.target, e.target.name)                   // Needs testing
-                    this.setState({ type: [...this.state.type, e.target.name] });
+                if (e.target.checked) {
+                    this.setState({
+                        type: [...this.state.type, e.target.name],
+                    });
                 } else {
-                    this.setState({type: this.state.type.filter((item) => item !== e.target.name)})
+                    this.setState({
+                        type: this.state.type.filter(
+                            (item) => item !== e.target.name
+                        ),
+                    });
                 }
                 break;
             case "weakness":
-                if(e.target.checked) {
-                    this.setState({ weakness: [...this.state.weakness, e.target.name] });
+                if (e.target.checked) {
+                    this.setState({
+                        weakness: [...this.state.weakness, e.target.name],
+                    });
                 } else {
-                    this.setState({weakness: this.state.weakness.filter((item) => item !== e.target.name)})
+                    this.setState({
+                        weakness: this.state.weakness.filter(
+                            (item) => item !== e.target.name
+                        ),
+                    });
                 }
                 break;
             default:
@@ -51,40 +66,56 @@ class App extends React.Component {
                 break;
         }
     };
-    typeHandler = (selection, value) => {               //Needs testing
-        if(selection.checked) {
-            let mapped = this.state.pokemon.map((item) => {
-                if(item.flat().includes(value)){
-                    return item.display = true;
-                } else {
-                    return item.display = false;
-                }
-            })
-            console.log(mapped);
-        }
-    }
-    // weaknessHandler = (selection, value) => {
-
-    // }
     render() {
         let mainDisplay;
-        if(this.state.fetchDone) {
+        if (this.state.fetchDone) {
             mainDisplay = (
                 <Card
-                        pokemon={this.state.pokemon}
-                        search={this.state.search}
-                        type={this.state.type}
-                        weakness={this.state.weakness}
-                    />
-            )
+                    pokemon={this.state.pokemon}
+                    search={this.state.search}
+                    type={this.state.type}
+                    weakness={this.state.weakness}
+                />
+            );
         } else {
-            mainDisplay = <h1 className="loader">Loading...</h1>
+            mainDisplay = <h1 className="loader">Loading...</h1>;
         }
         return (
             <div onChange={this.handleChange} className="mainContainer">
-                <Navbar pokemon={this.state.pokemon}/>
+                <Navbar pokemon={this.state.pokemon} />
                 <main>
-                    {mainDisplay}
+                    <Switch>
+                        <Route exact path="/">
+                            {mainDisplay}
+                        </Route>
+                        {this.state.pokemon.map((item) => {
+                            return (
+                                <Route path={`/${item.name}`}>
+                                    <div className="back">
+                                        <Link
+                                            style={{ textDecoration: "none" }}
+                                            exact
+                                            to="/"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                height="24px"
+                                                viewBox="0 0 24 24"
+                                                width="24px"
+                                                fill="#000000"
+                                            >
+                                                <path
+                                                    d="M0 0h24v24H0V0z"
+                                                    fill="none"
+                                                />
+                                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                                            </svg>
+                                        </Link>
+                                    </div>
+                                    <Profile profile={item}/>
+                                </Route>
+                            );
+                        })}
+                    </Switch>
                 </main>
             </div>
         );
