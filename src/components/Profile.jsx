@@ -5,7 +5,7 @@ function Profile({ profile }) {
         <div className="profileData">
             <div className="upperProfile">
                 <h1>{profile.name}</h1>
-                <img src={profile.img}></img>
+                <img src={profile.img} alt=""></img>
                 <div>#{profile.num}</div>
                 <div ><strong>{profile.name}</strong></div>
             </div>
