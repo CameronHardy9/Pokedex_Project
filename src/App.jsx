@@ -34,7 +34,7 @@ class App extends React.Component {
                 const typeBox = document.querySelectorAll(`[data-key="type"]`);
                 if (e.target.checked) {
                     typeBox.forEach((item) => {
-                        if(item.name != e.target.name) {
+                        if(item.name !== e.target.name) {
                             item.disabled = true;
                         }
                     })
@@ -56,7 +56,7 @@ class App extends React.Component {
                 const weakBox = document.querySelectorAll(`[data-key="weakness"]`);
                 if (e.target.checked) {
                     weakBox.forEach((item) => {
-                        if(item.name != e.target.name) {
+                        if(item.name !== e.target.name) {
                             item.disabled = true;
                         }
                     })
