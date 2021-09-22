@@ -37,6 +37,7 @@
 
 .name {
     font-weight: 700;
+    font-size: 16px;
 }
 
 .cardLower label {
@@ -63,7 +64,7 @@
 @media only screen and (max-width: 975px){
     .pokeCardContainer {
         width: 100px;
-        height: 150px;
+        height: 175px;
     }
 
     .profilePic {
@@ -75,19 +76,19 @@
 @media only screen and (min-width: 976px) and (max-width: 1150px){
     .pokeCardContainer {
         width: 150px;
-        height: 200px;
+        height: 225px;
     }
     
     .profilePic {
-        width: 120px;
-        height:120px;
+        width: 100px;
+        height:100px;
     }
 }
 
 @media only screen and (min-width: 1151px) and (max-width: 1400px){
     .pokeCardContainer {
         width: 200px;
-        height: 250px;
+        height: 275px;
     }
 
     .profilePic {
@@ -99,7 +100,7 @@
 @media only screen and (min-width: 1401px) {
     .pokeCardContainer {
         width: 250px;
-        height: 300px;
+        height: 325px;
     }
 
     .profilePic {
