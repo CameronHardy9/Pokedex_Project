@@ -22,7 +22,7 @@ function Card(props) {
                                         src={img}
                                         alt={name}
                                     />
-                                    <div>#{num}</div>
+                                    <div className="cardNum">#{num}</div>
                                     <div className="name">
                                         {name}
                                     </div>

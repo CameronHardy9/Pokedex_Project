@@ -1,12 +1,17 @@
 .pokeCardContainer {
-    width: 150px;
-    height: 200px;
+    width: 15.625vw;
+    height: 21.875vw;
     border: 2px solid black;
     border-radius: 10px;
     list-style: none;
     margin: 10px;
     background-color: var(--pokemon-3);
     overflow: hidden;
+}
+
+.profilePic {
+    width: 9.375vw;
+    height: 9.375vw;
 }
 
 .pokeCardContainer:hover {
@@ -37,13 +42,17 @@
 
 .name {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1.25vw;
+}
+
+.cardNum {
+    font-size: 1.25vw;
 }
 
 .cardLower label {
     text-decoration: underline;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.9375vw;
 }
 
 .cardLower li {
@@ -51,60 +60,11 @@
     margin-left: none;
     text-align:left;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 0.9375vw;
 }
 
 .allCards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 2000px;
-}
-
-@media only screen and (max-width: 975px){
-    .pokeCardContainer {
-        width: 100px;
-        height: 175px;
-    }
-
-    .profilePic {
-        width: 80px;
-        height:80px;
-    }
-}
-
-@media only screen and (min-width: 976px) and (max-width: 1150px){
-    .pokeCardContainer {
-        width: 150px;
-        height: 225px;
-    }
-    
-    .profilePic {
-        width: 100px;
-        height:100px;
-    }
-}
-
-@media only screen and (min-width: 1151px) and (max-width: 1400px){
-    .pokeCardContainer {
-        width: 200px;
-        height: 275px;
-    }
-
-    .profilePic {
-        width: 150px;
-        height:150px;
-    }
-}
-
-@media only screen and (min-width: 1401px) {
-    .pokeCardContainer {
-        width: 250px;
-        height: 325px;
-    }
-
-    .profilePic {
-        width: 200px;
-        height: 200px;
-    }
 }
